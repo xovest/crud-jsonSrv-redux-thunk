@@ -1,25 +1,3 @@
 {
-  "user": [
-    {
-      "name": "Josh",
-      "country": "UK",
-      "email": "josh@gmail.com",
-      "contact": "125791",
-      "id": 1
-    },
-    {
-      "name": "Greg",
-      "country": "Canda",
-      "email": "greg@gmail.com",
-      "contact": "112751",
-      "id": 2
-    },
-    {
-      "name": "Cindy",
-      "country": "Poland",
-      "email": "cindy@gmail.com",
-      "contact": "112991",
-      "id": 3
-    }
-  ]
+  "user": []
 }

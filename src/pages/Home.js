@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@material-ui/core';
+import { ButtonGroup, Button , Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
-import { loadUsers } from '../redux/actions';
+import { deleteUser, loadUsers } from '../redux/actions';
 
 export default function Home() {
   let dispatch = useDispatch();
@@ -11,9 +11,15 @@ export default function Home() {
     dispatch(loadUsers());
   }, []);
 
+  const handleDelete = (id) => {
+    if (window.confirm("Are you sure you want to delete the user?")) {
+      dispatch(deleteUser(id));
+    }
+  };
+
   return (
     <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 650, marginTop: 100 }} aria-label="simple table">
+      <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>
             <TableCell>Name</TableCell>
@@ -35,7 +41,12 @@ export default function Home() {
               <TableCell align="center">{user.email}</TableCell>
               <TableCell align="center">{user.contact}</TableCell>
               <TableCell align="center">{user.country}</TableCell>
-              <TableCell align="center"></TableCell>
+              <TableCell align="center">
+                <ButtonGroup variant="contained" aria-label="outlined primary button group">
+                  <Button onClick={() => handleDelete(user.id)} color="secondary">Delete</Button>
+                  <Button color="primary">Edit</Button>
+                </ButtonGroup>
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>
