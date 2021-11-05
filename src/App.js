@@ -1,6 +1,7 @@
 import { Route, Routes } from 'react-router';
 import './App.css';
 import AddUser from './pages/AddUser';
+import EditUser from './pages/EditUser';
 import Home from './pages/Home';
 
 function App() {
@@ -9,6 +10,7 @@ function App() {
       <Routes>
         <Route exact path="/" element={<Home />} />
         <Route path="/addUser" element={<AddUser />} />
+        <Route path="/editUser/:id" element={<EditUser />} />
       </Routes>
     </div>
   );

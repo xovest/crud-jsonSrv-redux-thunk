@@ -14,6 +14,10 @@ const userAdded = () => ({
   type: types.ADD_USER
 });
 
+const getUser = () => ({
+  type: types.GET_SINGLE_USER
+});
+
 export const loadUsers = () => {
   return function (dispatch) {
     axios
@@ -47,6 +51,18 @@ export const addUser = (user) => {
         console.log(res);
         dispatch(userAdded());
         dispatch(loadUsers());
+      })
+      .catch(err => console.log(err));
+  };
+};
+
+export const getSingleUser = (id) => {
+  return function (dispatch) {
+    axios
+      .get(`${process.env.REACT_APP_API}/${id}`)
+      .then(res => {
+        console.log(res);
+        dispatch(getUser(res.data));
       })
       .catch(err => console.log(err));
   };

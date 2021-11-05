@@ -52,7 +52,7 @@ export default function Home() {
                 <TableCell align="center">
                   <ButtonGroup variant="contained" aria-label="outlined primary button group">
                     <Button onClick={() => handleDelete(user.id)} color="secondary">Delete</Button>
-                    <Button color="primary">Edit</Button>
+                    <Button onClick={() => navigate(`/editUser/${user.id}`)} color="primary">Edit</Button>
                   </ButtonGroup>
                 </TableCell>
               </TableRow>

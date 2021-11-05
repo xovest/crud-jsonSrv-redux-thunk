@@ -23,7 +23,13 @@ const usersReducers = (state = initialState, action) => {
       return {
         ...state,
         loading: false
-      }
+      };
+    case types.GET_SINGLE_USER:
+      return {
+        ...state,
+        user: action.payload,
+        loading: false
+      };
     default:
       return state;
   }
