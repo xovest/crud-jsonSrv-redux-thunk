@@ -42,13 +42,13 @@ const AddUser = () => {
       <h2>Add User</h2>
       {error && <h3 style={{ color: "red" }}>{error}</h3>}
       <form noValidate autoComplete="off" onSubmit={handleSubmit}>
-        <TextField id="outlined-basic" name="name" label="Name" variant="outlined" value={name} type="text" onChange={handleInput} />
+        <TextField id="filled-basic" name="name" label="Name" variant="filled" value={name} type="text" onChange={handleInput} />
         <br />
-        <TextField id="outlined-basic" name="email" label="Email" variant="outlined" value={email} type="email" onChange={handleInput} />
+        <TextField id="filled-basic" name="email" label="Email" variant="filled" value={email} type="email" onChange={handleInput} />
         <br />
-        <TextField id="outlined-basic" name="contact" label="Contact" variant="outlined" value={contact} type="number" onChange={handleInput} />
+        <TextField id="filled-basic" name="contact" label="Contact" variant="filled" value={contact} type="number" onChange={handleInput} />
         <br />
-        <TextField id="outlined-basic" name="country" label="Country" variant="outlined" value={country} type="text" onChange={handleInput} />
+        <TextField id="filled-basic" name="country" label="Country" variant="filled" value={country} type="text" onChange={handleInput} />
         <br />
         <Button type="submit" variant="contained" color="primary" >
           Submit

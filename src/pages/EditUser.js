@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Button, TextField } from '@material-ui/core';
 import { useNavigate, useParams } from 'react-router';
-import { addUser, getSingleUser } from '../redux/actions';
-import { useDispatch } from 'react-redux';
+import { getSingleUser, updateUser } from '../redux/actions';
+import { useDispatch, useSelector } from 'react-redux';
 
 const EditUser = () => {
   const [state, setState] = useState({
@@ -13,10 +13,17 @@ const EditUser = () => {
   });
   const [error, setError] = useState("");
   let { id } = useParams();
+  const { user } = useSelector(state => state.data);
 
   useEffect(() => {
     dispatch(getSingleUser(id));
   }, []);
+
+  useEffect(() => {
+    if (user) {
+      setState({ ...user });
+    }
+  }, [user]);
 
   const {name, email, contact, country} = state;
 
@@ -33,7 +40,7 @@ const EditUser = () => {
     if (!name || !country || !email || !contact) {
       setError("Plez fill in all the blanks douch!");
     } else {
-      dispatch(addUser(state));
+      dispatch(updateUser(state, id));
       navigate('/');
       setError('');
     }
@@ -44,16 +51,16 @@ const EditUser = () => {
       <Button type="submit" variant="contained" color="secondary" onClick={() => navigate('/')} >
         Go back
       </Button>
-      <h2>Editing User {}</h2>
+      <h2>Editing {user.name}</h2>
       {error && <h3 style={{ color: "red" }}>{error}</h3>}
       <form noValidate autoComplete="off" onSubmit={handleSubmit}>
-        <TextField id="outlined-basic" name="name" label="Name" variant="outlined" value={name} type="text" onChange={handleInput} />
+        <TextField id="filled-basic" name="name" label="Name" variant="filled" value={name || ""} type="text" onChange={handleInput} />
         <br />
-        <TextField id="outlined-basic" name="email" label="Email" variant="outlined" value={email} type="email" onChange={handleInput} />
+        <TextField id="filled-basic" name="email" label="Email" variant="filled" value={email || ""} type="email" onChange={handleInput} />
         <br />
-        <TextField id="outlined-basic" name="contact" label="Contact" variant="outlined" value={contact} type="number" onChange={handleInput} />
+        <TextField id="filled-basic" name="contact" label="Contact" variant="filled" value={contact || ""} type="number" onChange={handleInput} />
         <br />
-        <TextField id="outlined-basic" name="country" label="Country" variant="outlined" value={country} type="text" onChange={handleInput} />
+        <TextField id="filled-basic" name="country" label="Country" variant="filled" value={country || ""} type="text" onChange={handleInput} />
         <br />
         <Button type="submit" variant="contained" color="primary" >
           Update
