@@ -1,3 +1,25 @@
 {
-  "user": []
+  "user": [
+    {
+      "name": "123",
+      "email": "123123@",
+      "contact": "123123",
+      "country": "Fra",
+      "id": 2
+    },
+    {
+      "name": "sad",
+      "email": "sad@aa",
+      "contact": "123",
+      "country": "Fra",
+      "id": 3
+    },
+    {
+      "name": "hah",
+      "email": "ss@ss",
+      "contact": "123333",
+      "country": "Faa",
+      "id": 4
+    }
+  ]
 }
